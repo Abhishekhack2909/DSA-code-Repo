@@ -50,89 +50,63 @@
 //    return 0;
 //}
 #include <iostream>
-#include <vector>
-#include <cstdlib>  // For exit()
 
 using namespace std;
 
-// Function declarations
-void insert();
-void deleteElement();
-void display();
-
-// Global variables
-int front = -1, rear = -1;
-vector<int> queue;
-
-int main() {
-    int choice = 0;
-    while (choice != 4) {
-        cout << "\n*************************Main Menu*****************************\n";
-        cout << "\n==============================================================\n";
-        cout << "\n1. Insert an element\n2. Delete an element\n3. Display the queue\n4. Exit\n";
-        cout << "\nEnter your choice: ";
-        cin >> choice;
-        
-        switch (choice) {
-            case 1:
-                insert();
-                break;
-            case 2:
-                deleteElement();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                cout << "Exiting program..." << endl;
-                exit(0);
-            default:
-                cout << "Invalid choice! Please try again." << endl;
-        }
+// Insert n into arr at the next open position.
+// Length is the number of 'real' values in arr, and capacity
+// is the size (aka memory allocated for the fixed size array).
+void insertEnd(int arr[], int n, int length, int capacity) {
+    if (length < capacity) {
+        arr[length] = n;
     }
-    return 0;
 }
 
-void insert() {
-    int item;
-    cout << "Enter the element to insert: ";
-    cin >> item;
+// Remove from the last position in the array if the array
+// is not empty (i.e. length is non-zero).
+void removeEnd(int arr[], int length) {
+    if (length > 0) {
+        arr[length - 1] = 0;
+    }
+}
+
+// Insert n into index i after shifting elements to the right.
+// Assuming i is a valid index and arr is not full.
+void insertMiddle(int arr[], int i, int n, int length) {
+    for (int index = length - 1; index >= i; index--) {
+        arr[index + 1] = arr[index];
+    }   
+    arr[i] = n;
+}
+
+// Remove value at index i before shifting elements to the left.
+// Assuming i is a valid index.
+void removeMiddle(int arr[], int i, int length) {
+    for (int index = i + 1; index < length; index++) {
+        arr[index - 1] = arr[index];
+    }
+}
+
+void printArr(int arr[], int capacity) {
+    for (int i = 0; i < capacity; i++) {
+        cout << arr[i] << ' ';
+    }
+    cout << endl;
+}
+
+int main(){
+    int capacity=10;
+    int arr[capacity]={23,34,45,45,76,89};
+    int length=6;
+     cout<<"before insertion";
+     printArr(arr, 10);
+     
+    insertMiddle(arr, 0, 56, 6);
+    length++;
+     
+    cout<<"after insertion";
+    printArr(arr, 10);
+
     
-    if (front == -1 && rear == -1) {
-        front = 0;
-        rear = 0;
-    } else {
-        rear++;
-    }
-    queue.push_back(item);
-    cout << "Value " << item << " inserted successfully!" << endl;
 }
 
-void deleteElement() {
-    if (front == -1 || front > rear) {
-        cout << "UNDERFLOW - Queue is empty!" << endl;
-        return;
-    }
-    
-    int item = queue[front];
-    if (front == rear) {
-        front = -1;
-        rear = -1;
-    } else {
-        front++;
-    }
-    queue.erase(queue.begin());  // Remove the front element
-    cout << "Value " << item << " deleted successfully!" << endl;
-}
-
-void display() {
-    if (rear == -1) {
-        cout << "Queue is empty!" << endl;
-    } else {
-        cout << "Queue elements:" << endl;
-        for (int i = front; i <= rear; i++) {
-            cout << queue[i] << " ";
-        }
-        cout << endl;
-    }
-}
