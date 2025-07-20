@@ -262,8 +262,8 @@ int main()
 {
     Node *root = createTree();
     // printTopview(root);
-    // printbottomview(root);
-    printboundary(root);
+    printbottomview(root);
+    // printboundary(root);
     // vector<int> leftView;
     //
     // printleftview(root, 0, leftView);
