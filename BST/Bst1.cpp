@@ -145,6 +145,33 @@ Node *maxval(Node *root)
     return temp;
 } // working fine
 
+// binary search in tree
+bool binarysearchinBST(Node *root, int target)
+{
+    if (root == NULL)
+    {
+        return false;
+    }
+    // sirf ye wala case solve karna hai mujhe
+    if (root->data == target)
+    {
+        return true;
+    }
+    // baki ka recursion sambha lenaga
+    bool leftans = false;
+    bool rightans = false;
+    // pta kaise chalenga ke left yha right kidhar jana hai islye compare karenge
+    if (target > root->data)
+    {
+        rightans = binarysearchinBST(root->right, target);
+    }
+    else
+    {
+        leftans = binarysearchinBST(root->left, target);
+    }
+    return leftans || rightans;
+}
+
 int main()
 {
     Node *root = NULL;
@@ -162,14 +189,32 @@ int main()
     // }
     // return 0;
 
-    Node *hg = maxval(root);
-    if (hg == NULL)
+    // Node *hg = maxval(root);
+    // if (hg == NULL)
+    //{
+    //     cout << "there is no element that is maximum";
+    // }
+    // else
+    //{
+    //     cout << "maxium val is :" << hg->data << endl;
+    // }
+    // return 0;
+
+    int t;
+    cout << "Enter the target ";
+    cin >> t;
+    while (t != -1)
     {
-        cout << "there is no element that is maximum";
+        bool ans = binarysearchinBST(root, t);
+        if (ans == true)
+        {
+            cout << "found" << endl;
+        }
+        else
+        {
+            cout << "Not Found" << endl;
+        }
+        cout << "Enter the target";
+        cin >> t;
     }
-    else
-    {
-        cout << "maxium val is :" << hg->data << endl;
-    }
-    return 0;
 }
