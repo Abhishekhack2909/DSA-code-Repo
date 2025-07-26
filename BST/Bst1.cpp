@@ -259,7 +259,7 @@ Node *bstusinginorder(int inorder[], int s, int e)
 }
 
 int main()
-{
+{ nod
     // sample value for making tree-> 50 30 60 25 40 70 80 55 -1
 
     // Node *root = NULL;
