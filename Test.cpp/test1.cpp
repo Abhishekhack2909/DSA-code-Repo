@@ -215,9 +215,9 @@
 ////program worked
 
 // program for making the array in reverse
-//#include <bits/stdc++.h>
-//using namespace std;
-//int reversethearray(vector<int> &nums)
+// #include <bits/stdc++.h>
+// using namespace std;
+// int reversethearray(vector<int> &nums)
 //{
 //  int left = 0;
 //  int right = nums.size() - 1;
@@ -228,7 +228,7 @@
 //    right--;
 //  }
 //}
-//int main()
+// int main()
 //{
 //  vector<int> nums = {23, 34, 45, 56, 67, 78};
 //  reversethearray(nums);
@@ -240,154 +240,320 @@
 //  return 0;
 //}
 //
-//#include <iostream>
-//#include <stack>
-//#include <string>
-//using namespace std;
+// #include <iostream>
+// #include <stack>
+// #include <string>
+// using namespace std;
 //
 //// Function to get precedence of operators
-//int precedence(char op) {
-//    if(op == '+' || op == '-') return 1;
-//    if(op == '*' || op == '/') return 2;
-//    return 0;
-//}
+// int precedence(char op) {
+//     if(op == '+' || op == '-') return 1;
+//     if(op == '*' || op == '/') return 2;
+//     return 0;
+// }
 //
 //// Function to convert infix to postfix
-//string infixToPostfix(string infix) {
-//    stack<char> s;
-//    string postfix = "";
+// string infixToPostfix(string infix) {
+//     stack<char> s;
+//     string postfix = "";
 //
-//    for(char ch : infix) {
-//        if(isalpha(ch)) {
-//            
-//            postfix += ch;
-//        }
-//        else if(ch == '(') {
-//            s.push(ch);
-//        }
-//        else if(ch == ')') {
-//            while(!s.empty() && s.top() != '(') {
-//                postfix += s.top();
-//                s.pop();
-//            }
-//            if(!s.empty()) s.pop(); 
-//        }
-//        else {
-//            
-//            while(!s.empty() && precedence(s.top()) >= precedence(ch)) {
-//                postfix += s.top();
-//                s.pop();
-//            }
-//            s.push(ch);
-//        }
-//    }
-//    while(!s.empty()) {
-//        postfix += s.top();
-//        s.pop();
-//    }
+//     for(char ch : infix) {
+//         if(isalpha(ch)) {
 //
-//    return postfix;
-//}
+//             postfix += ch;
+//         }
+//         else if(ch == '(') {
+//             s.push(ch);
+//         }
+//         else if(ch == ')') {
+//             while(!s.empty() && s.top() != '(') {
+//                 postfix += s.top();
+//                 s.pop();
+//             }
+//             if(!s.empty()) s.pop();
+//         }
+//         else {
 //
-//int main() {
-//    string infix;
-//    cout << "Enter infix expression (e.g., A+B*C): ";
-//    cin >> infix;
+//             while(!s.empty() && precedence(s.top()) >= precedence(ch)) {
+//                 postfix += s.top();
+//                 s.pop();
+//             }
+//             s.push(ch);
+//         }
+//     }
+//     while(!s.empty()) {
+//         postfix += s.top();
+//         s.pop();
+//     }
 //
-//    string postfix = infixToPostfix(infix);
-//    cout << "Postfix expression: " << postfix << endl;
+//     return postfix;
+// }
 //
-//    return 0;
-//}
+// int main() {
+//     string infix;
+//     cout << "Enter infix expression (e.g., A+B*C): ";
+//     cin >> infix;
+//
+//     string postfix = infixToPostfix(infix);
+//     cout << "Postfix expression: " << postfix << endl;
+//
+//     return 0;
+// }
 
-//#include <iostream>
-//#include <stack>
-//#include <string>
-//#include <cctype>
-//using namespace std;
+// #include <iostream>
+// #include <stack>
+// #include <string>
+// #include <cctype>
+// using namespace std;
 //
 //// Function to get precedence of operators
-//int getPrecedence(char op) {
-//    if(op == '^') return 3;
-//    if(op == '*' || op == '/') return 2;
-//    if(op == '+' || op == '-') return 1;
-//    return 0;
-//}
+// int getPrecedence(char op) {
+//     if(op == '^') return 3;
+//     if(op == '*' || op == '/') return 2;
+//     if(op == '+' || op == '-') return 1;
+//     return 0;
+// }
 //
 //// Function to check associativity: returns true if right-associative
-//bool isRightAssociative(char op) {
-//    return (op == '^');
-//}
+// bool isRightAssociative(char op) {
+//     return (op == '^');
+// }
 //
 //// Function to check if character is an operator
-//bool isOperator(char ch) {
-//    return (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^');
-//}
+// bool isOperator(char ch) {
+//     return (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^');
+// }
 //
 //// Infix to Postfix Conversion Function
-//string infixToPostfix(string infix) {
-//    stack<char> st;
-//    string postfix = "";
+// string infixToPostfix(string infix) {
+//     stack<char> st;
+//     string postfix = "";
 //
-//    for(char ch : infix) {
-//        if(isalnum(ch)) {
-//            postfix += ch; // Operand directly to postfix
-//        }
-//        else if(ch == '(') {
-//            st.push(ch);
-//        }
-//        else if(ch == ')') {
-//            while(!st.empty() && st.top() != '(') {
-//                postfix += st.top();
-//                st.pop();
-//            }
-//            if(!st.empty()) st.pop(); // Remove '('
-//        }
-//        else if(isOperator(ch)) {
-//            while(!st.empty() && st.top() != '(' &&
-//                  ((getPrecedence(st.top()) > getPrecedence(ch)) ||
-//                  (getPrecedence(st.top()) == getPrecedence(ch) && !isRightAssociative(ch)))) {
-//                postfix += st.top();
-//                st.pop();
-//            }
-//            st.push(ch);
-//        }
-//    }
+//     for(char ch : infix) {
+//         if(isalnum(ch)) {
+//             postfix += ch; // Operand directly to postfix
+//         }
+//         else if(ch == '(') {
+//             st.push(ch);
+//         }
+//         else if(ch == ')') {
+//             while(!st.empty() && st.top() != '(') {
+//                 postfix += st.top();
+//                 st.pop();
+//             }
+//             if(!st.empty()) st.pop(); // Remove '('
+//         }
+//         else if(isOperator(ch)) {
+//             while(!st.empty() && st.top() != '(' &&
+//                   ((getPrecedence(st.top()) > getPrecedence(ch)) ||
+//                   (getPrecedence(st.top()) == getPrecedence(ch) && !isRightAssociative(ch)))) {
+//                 postfix += st.top();
+//                 st.pop();
+//             }
+//             st.push(ch);
+//         }
+//     }
 //
-//    // Pop remaining operators
-//    while(!st.empty()) {
-//        postfix += st.top();
-//        st.pop();
-//    }
+//     // Pop remaining operators
+//     while(!st.empty()) {
+//         postfix += st.top();
+//         st.pop();
+//     }
 //
-//    return postfix;
-//}
+//     return postfix;
+// }
 //
 //// Main function
-//int main() {
-//    string infix;
-//    cout << "Enter infix expression (e.g., A+B*C^D): ";
-//    cin >> infix;
+// int main() {
+//     string infix;
+//     cout << "Enter infix expression (e.g., A+B*C^D): ";
+//     cin >> infix;
 //
-//    string postfix = infixToPostfix(infix);
-//    cout << "Postfix expression: " << postfix << endl;
+//     string postfix = infixToPostfix(infix);
+//     cout << "Postfix expression: " << postfix << endl;
+//
+//     return 0;
+// }
+//
+// #include <iostream>
+// using namespace std;
+//
+// unsigned long long factorial(int n) {
+//     if (n < 0) return 0;
+//     if (n == 0 || n == 1) return 1;
+//     return n * factorial(n - 1);
+// }
+//
+// int main() {
+//     int num;
+//     cout << "Enter a non-negative integer: ";
+//     cin >> num;
+//     cout << "Factorial of " << num << " is: " << factorial(num) << endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//     string n;
+//     cin >> n;
+//     int count = 0;
+//     for (int i = 0; i < n.size(); i++)
+//     {
+//
+//         if (n[i] == '4' || n[i] == '7')
+//         {
+//             count++;
+//         }
+//     }
+//     if (count == 4 || count == 7)
+//     {
+//         cout << "YES" << endl;
+//     }
+//     else
+//     {
+//         cout << "NO" << endl;
+//     }
+// }
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// using namespace std;
+//
+// int main() {
+//     string n;
+//     cin >> n;
+//     vector<int> m;
+//
+//     for (char c : n) {
+//         if (c != '+') {
+//             m.push_back(c - '0');
+//         }
+//     }
+//     sort(m.begin(), m.end());
+//     for (int u = 0; u < m.size(); u++) {
+//         cout << m[u];
+//         if (u != m.size() - 1) {
+//             cout << "+";
+//         }
+//     }
+//
+//     return 0;
+// }
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    int n;
+//    cout << "enter the number";
+//    cin >> n;
+//    int array[n];
+//    for (int i = 0; i < n; i++)
+//    {
+//        cin >> array[i];
+//    }
+//    for (int i = 0; i < n; i++)
+//    {
+//        cout << array[i] << " ";
+//    }
+//    cout << endl;
 //
 //    return 0;
 //}
+
+// codeforces  q ->words
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main()
+//{
+//    string s1;
+//    cin >> s1;
+//    int uppercount = 0;
+//    int lowercount = 0;
+//    for (char &c : s1)
+//    {
+//        if (c >= 'a' && c <= 'z')
+//        {
+//            lowercount++;
+//        }
 //
-#include <iostream>
+//        else if (c >= 'A' && c <= 'Z')
+//            uppercount++;
+//    }
+//
+//    if (uppercount == lowercount || lowercount > uppercount)
+//    {
+//        string cs;
+//        for (char &w : s1)
+//        {
+//            cs += tolower(w);
+//        }
+//        cout << cs << endl;
+//    }
+//    else
+//    {
+//        string sc;
+//        for (char &e : s1)
+//        {
+//            sc += toupper(e);
+//        }
+//        cout << sc << endl;
+//    }
+//    return 0;
+//}
+//
+
+// codeforces q->467A - George and Accommodation
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    int n;
+//    cin >> n;
+//    int count = 0;
+//    if (n <= 0)
+//    {
+//        cout << "0" << endl;
+//        return 0;
+//    }
+//    for (int i = 1; i <= n; i++)
+//    {
+//        int p, q;
+//        cin >> p >> q;
+//
+//        if (q - p >= 2)
+//        {
+//            count++;
+//        }
+//    }
+//    cout << count << endl;
+//    return 0;
+//}
+//
+// codeforces questiioon string task
+#include <bits/stdc++.h>
 using namespace std;
+int main()
+{
+    string s1;
+    cin >> s1;
+    string result;
+    for (char &c : s1)
+    {
+        if (!(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' ||
+              c == 'A' || c == 'Y' || c == 'E' || c == 'I' || c == 'O' || c == 'U'))
+        {
+            result += c;
+        }
+    }
 
-unsigned long long factorial(int n) {
-    if (n < 0) return 0; 
-    if (n == 0 || n == 1) return 1;
-    return n * factorial(n - 1);
-}
+    string r1;
+    for (char &w : result)
+    {
+        cout << "." << (char)tolower(w);
+    }
 
-int main() {
-    int num;
-    cout << "Enter a non-negative integer: ";
-    cin >> num;
-    cout << "Factorial of " << num << " is: " << factorial(num) << endl;
     return 0;
 }

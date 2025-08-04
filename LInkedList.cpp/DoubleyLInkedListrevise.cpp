@@ -119,9 +119,24 @@ void deleteNode(Node *head, Node *tail, int position)
    {
       cout << "cannnot delete anything  coz head  is  NULL";
    }
-   // for single  element in
-   int length = findlength(head);
-   if (positon == 1)
+   // for single  element
+   if (head == tail)
    {
+      Node *newNode = head;
+      head = NULL;
+      tail = NULL : return;
+   }
+   int length = findlength(head);
+   if (position == 1)
+   {
+      Node *temp = head;
+      head = head->next;
+      temp->next = NULL;
+      head->prev = NULL;
+      delete temp;
+   }
+   else if (position == length)
+   {
+      Node *temp = head;
    }
 }
