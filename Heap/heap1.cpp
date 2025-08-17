@@ -2,7 +2,7 @@
 using namespace std;
 
 // imp imp imp
-//  1->kisi bhi array ka max , main nikkaal na hai to heap se 0(1) TC se nikal jata hai  hai
+//  1->kisi bhi array ka max , min nikkaal na hai to heap se 0(1) TC se nikal jata hai  hai
 //  2->kisi bhi n size ke array ko heap  ke creation  me 0(n) TC lagta hai not 0(nlogn); //very imp
 //  3->for  insertion and deletion in heap 0(logn);
 

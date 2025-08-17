@@ -533,27 +533,398 @@
 //}
 //
 // codeforces questiioon string task
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main()
+//{
+//    string s1;
+//    cin >> s1;
+//    string result;
+//    for (char &c : s1)
+//    {
+//        if (!(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' ||
+//              c == 'A' || c == 'Y' || c == 'E' || c == 'I' || c == 'O' || c == 'U'))
+//        {
+//            result += c;
+//        }
+//    }
+//
+//    string r1;
+//    for (char &w : result)
+//    {
+//        cout << "." << (char)tolower(w);
+//    }
+//
+//    return 0;
+//}
+
+// codeforces question boy or girl
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//     string username;
+//     cin >> username;
+//     int n = username.length();
+//     int count = 0;
+//
+//     for (int i = 0; i < n; i++)
+//     {
+//         bool found = false;
+//         for (int j = 0; j < i; j++)
+//         {
+//             if (username[i] = username[j])
+//             {
+//                 found = true;
+//                 break;
+//             }
+//         }
+//         if (!found)
+//         {
+//             count++;
+//         }
+//     }
+//     if (count % 2 == 0)
+//     {
+//         cout << "CHAT WITH HER!" << endl;
+//     }
+//     else
+//     {
+//         cout << "IGNORE HIM!" << endl;
+//     }
+//
+//     return 0;
+// }
+//
+
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//     string position;
+//     cin >> position;
+//     int count = 1;
+//     int n = position.length();
+//     int maxi = 1;
+//     for (int i = 0; i < n; i++)
+//     {
+//
+//         for (int j = i + 1; j < n; j++)
+//         {
+//             if (position[i] == position[j])
+//             {
+//                 count++;
+//                 if (count > maxi)
+//                     maxi = count;
+//             }
+//             else
+//             {
+//                 count = 1;
+//             }
+//         }
+//     }
+//
+//     if (count >= 7)
+//     {
+//         cout << "YES" << endl;
+//     }
+//     else
+//     {
+//         cout << "NO" << endl;
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+// using namespace std;
+// int main(){
+//
+//     string position;
+//     cin >> position;
+//     int count = 1, maxi = 1;
+//     for (int i = 1; i < position.length(); i++)
+//     {
+//         if (position[i] == position[i - 1])
+//         {
+//             count++;
+//             if (count > maxi)
+//                 maxi = count;
+//         }
+//         else
+//         {
+//             count = 1;
+//         }
+//     }
+//     if (maxi >= 7)
+//         cout << "YES\n";
+//     else
+//         cout << "NO\n";
+//     return 0;
+// }
+// #include <iostream>
+// using namespace std;
+//
+// int main() {
+//     int n;
+//     cin >> n;
+//     int sum = 0;
+//     for (int i = 0; i < n; ++i) {
+//         int p;
+//         cin >> p;
+//         sum += p;
+//     }
+//     double average = (double)sum / n;
+//     cout << average << endl;
+//     return 0;
+// }
+
+// code forces problem(queue of the school)
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    char boy = 'B';
+//    char girl = 'G';
+//    int n;
+//    int t;
+//    cin >> n >> t;
+//    string word;
+//    cin >> word;
+//    while (t--)
+//    {
+//        for (int i = 0; i < n - 1;)
+//        {
+//            if (word[i] == 'B' && word[i + 1] == 'G')
+//            {
+//                swap(word[i], word[i + 1]);
+//                i++;
+//            }
+//            i++;
+//        }
+//    }
+//    cout << word << endl;
+//
+//    return 0;
+//}
+
+// codeforces q presents
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    int n;
+//    cin >> n;
+//    int arr[n];
+//    for (int i = 1; i <= n; i++)
+//    {
+//        int a;
+//        cin >> a;
+//        arr[a - 1] == i;
+//    }
+//    for (int i = 0; i < n; i++)
+//    {
+//        cout << arr[i] << " ";
+//    }
+//    return 0;
+//}
+
+// codeforces q Dubstep
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    string w;
+//    cin >> w;
+//    int n = w.length();
+//    string result;
+//    for (int i = 0; i < n; i++)
+//    {
+//        if (i + 2 < n && w[i] == 'W' && w[i + 1] == 'U' && w[i + 2] == 'B')
+//        {
+//            if (!result.empty() && result.back() != ' ')
+//            {
+//                result += ' ';
+//            }
+//            i += 2;
+//        }
+//        else
+//        {
+//            result += w[i];
+//        }
+//    }
+//    cout << result << endl;
+//    return 0;
+//}
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    long long n, m;
+//    cin >> n >> m;
+//     long long sum = 0;
+//      long long position = 1;
+//
+//    for (int current = 0; current <= m; current++)
+//    {
+//        int target;
+//        cin >> target;
+//          long long time;
+//        if (target >= position)
+//        {
+//            time = target - position;
+//        }
+//        else
+//        {
+//            time = (n - position) + target;
+//        }
+//        sum += time;
+//        position = target;
+//    }
+//    cout << sum << endl;
+//    return 0;
+//}
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    string ch;
+//    cin >> ch;
+//    if (ch[0] >= 'a' && ch[0] <= 'z')
+//    {
+//        // we use Ascii approach here
+//        ch[0] -= 32;
+//    }
+//    cout << ch << endl;
+//}
+//
+// #include <iostream>
+// #include <cmath>
+////
+// using namespace std;
+//  int main()
+//{
+//      string ch;
+//      cin >> ch;
+//      char position = 'a';
+//      int sum = 0;
+//      for (char c : ch)
+//      {    //we use abs for shorter code
+//          int diff = abs(c - position);
+//          // 2case here either clockwise  or counterclockwise
+//          sum += min(diff, 26 - diff);
+//          position = c;
+//      }
+//      cout << sum << endl;
+//  }
+// #include <iostream>
+// using namespace std;
+//
+// int main() {
+//     int n, m, a, b;
+//     cin >> n >> m >> a >> b;
+//     int normal = n * a;
+//      int special = ((n + m - 1) / m) * b;
+//     int mixed = (n / m) * b + min((n % m) * a, b);
+//
+//     cout << min({normal, special, mixed});
+// }
+//
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main()
+//{
+//    string ch, target;
+//    cin >> ch >> target;
+//    reverse(ch.begin(), ch.end());
+//    if (ch == target)
+//    {
+//        cout << "YES" << endl;
+//    }
+//    else
+//    {
+//        cout << "NO" << endl;
+//    }
+//}
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    long long n, k;
+//    cin >> n >> k;
+//
+//     if (n < 1 || k < 1 || k > n) {
+//        cout<<"Invalid"
+//        return 0;
+//    }
+//    long long even_num = (n + 1) / 2;
+//    if (k >= even_num && n > 0)
+//    {
+//        cout << 2 * (k - even_num) << endl;
+//    }
+//    else
+//    {
+//        cout << 2 * k - 1 << endl;
+//    }
+//}
+//
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main() {
+//    int num;
+//    cin >> num;
+//    vector<int> a(num);
+//    int sum = 0;
+//    for(int &x : a) {
+//        cin >> x;
+//        sum += x;
+//    }
+//    sort(a.rbegin(), a.rend());
+//    int msum= 0;
+//    int  count = 0;
+//    for(int x : a) {
+//        msum += x;
+//        count++;
+//        if(msum > sum - msum) {
+//        break;
+//        }
+//    }
+//    cout << count;
+//}
+//
+
+#include <iostream>
 using namespace std;
+
+void selectionsort(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int smallestindex = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[j] < arr[smallestindex]) // Changed from while to if
+            {
+                smallestindex = j;
+            }
+        }
+        swap(arr[i], arr[smallestindex]); // Added missing semicolon
+    }
+}
+
+void printarray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
 int main()
 {
-    string s1;
-    cin >> s1;
-    string result;
-    for (char &c : s1)
-    {
-        if (!(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' ||
-              c == 'A' || c == 'Y' || c == 'E' || c == 'I' || c == 'O' || c == 'U'))
-        {
-            result += c;
-        }
-    }
-
-    string r1;
-    for (char &w : result)
-    {
-        cout << "." << (char)tolower(w);
-    }
-
-    return 0;
+    int arr[] = {23, 2, 45, 0};
+    int n = 4;
+    selectionsort(arr, n);
+    printarray(arr, n);
+    return 0; // Added return statement for good practice
 }
