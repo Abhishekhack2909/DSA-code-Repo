@@ -892,39 +892,141 @@
 //}
 //
 
+// merge sort algorithm
+// #include <iostream>
+// using namespace std;
+//
+// void selectionsort(int arr[], int n)
+//{
+//     for (int i = 0; i < n - 1; i++)
+//     {
+//         int smallestindex = i;
+//         for (int j = i + 1; j < n; j++)
+//         {
+//             if (arr[j] < arr[smallestindex]) // Changed from while to if
+//             {
+//                 smallestindex = j;
+//             }
+//         }
+//         swap(arr[i], arr[smallestindex]); // Added missing semicolon
+//     }
+// }
+//
+// void printarray(int arr[], int n)
+//{
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+// }
+//
+// int main()
+//{
+//     int arr[] = {23, 2, 45, 0};
+//     int n = 4;
+//     selectionsort(arr, n);
+//     printarray(arr, n);
+//     return 0; // Added return statement for good practice
+// }
+
+// quick sort algorightm
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//
+//    int partition(arr[], int st, int end)
+//    {
+//        int pivot = patition
+//    }
+//    void quicksort(int arr[], int st, int end)
+//    {
+//        /// base case
+//        if (start >= end)
+//        {
+//            return;
+//        }
+//
+//        int p = partition(arr, st, end);
+//
+//        quicksort(arr, st, p - 1);
+//        quicksort(arr, p + 1, end);
+//    }
+//}
+//
+// codeforces contests soultion
+// #include<iostream>
+// #include<vector>
+// using namespace std;
+// int main(){
+//
+//    string n;
+//    cin>>n;
+//     vector<int>prevrate(n);
+//
+//    for(int i=0;i<n;i++){
+//        cin>>prevrate[i];
+//    }
+//    vector<int>newpos(n);
+//    for( int i=0; i<n; i++){
+//        int count=0;
+//        for( int j=0; j<n; j++){
+//            if(prevrate[j]> prevrate[i]){
+//                count++;
+//            }
+//        }
+//        newpos[i]=count+1;
+//
+//    }
+//    for( int i =0; i<n;i++){
+//        cout<<newpos[i]<<endl;
+//    }
+//    cout<<endl;
+//    return 0;
+//}
+
+// codeforces elephant soln
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    int x;
+//    cin >> x;
+//    if (x <= 5)
+//    {
+//        cout << "1" << endl;
+//    }
+//    else
+//    {
+//        int q = x % 5;
+//        int w = (x - q) / 5;
+//        if (x % 5 == 0)
+//        {
+//            cout << w << endl;
+//        }
+//        else
+//        {
+//            cout << w + 1 << endl;
+//        }
+//    }
+//    return 0;
+//}
+
+// codeforces question  soldiers and bananaes
 #include <iostream>
 using namespace std;
-
-void selectionsort(int arr[], int n)
-{
-    for (int i = 0; i < n - 1; i++)
-    {
-        int smallestindex = i;
-        for (int j = i + 1; j < n; j++)
-        {
-            if (arr[j] < arr[smallestindex]) // Changed from while to if
-            {
-                smallestindex = j;
-            }
-        }
-        swap(arr[i], arr[smallestindex]); // Added missing semicolon
-    }
-}
-
-void printarray(int arr[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
-
 int main()
 {
-    int arr[] = {23, 2, 45, 0};
-    int n = 4;
-    selectionsort(arr, n);
-    printarray(arr, n);
-    return 0; // Added return statement for good practice
+    int n, k, w;
+    cin >> k >> n >> w;
+    int cost = k * w * (w + 1) / 2;
+    int ans = cost - n;
+    if (ans < 0)
+    {
+        ans = 0;
+    }
+    cout << ans << endl;
+
+    return 0;
 }
