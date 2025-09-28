@@ -1014,19 +1014,204 @@
 //}
 
 // codeforces question  soldiers and bananaes
+// #include <iostream>
+// using namespace std;
+// int main()
+//{
+//    int n, k, w;
+//    cin >> k >> n >> w;
+//    int cost = k * w * (w + 1) / 2;
+//    int ans = cost - n;
+//    if (ans < 0)
+//    {
+//        ans = 0;
+//    }
+//    cout << ans << endl;
+//
+//    return 0;
+//}
+
+// #include <iostream>
+// using namespace std;
+// class Stack
+//{
+// private:
+//     int arr[100]; // Fixed-size array
+//     int top;
+//
+// public:
+//     Stack()
+//     {
+//         top = -1;
+//     }
+//
+//     // Push element into stack
+//     void push(int value)
+//     {
+//         if (top == 99)
+//         {
+//             cout << "Stack Overflow\n";
+//         }
+//         else
+//         {
+//             arr[++top] = value;
+//         }
+//     }
+//
+//     // Pop element from stack
+//     void pop()
+//     {
+//         if (top == -1)
+//         {
+//             cout << "Stack Underflow\n";
+//         }
+//         else
+//         {
+//             top--;
+//         }
+//     }
+//
+//     // Peek top element
+//     int peek()
+//     {
+//         if (top == -1)
+//         {
+//             cout << "Stack is empty\n";
+//             return -1;
+//         }
+//         else
+//         {
+//             return arr[top];
+//         }
+//     }
+//
+//     // Check if stack is empty
+//     bool isEmpty()
+//     {
+//         return top == -1;
+//     }
+//
+//     // Display stack elements
+//     void display()
+//     {
+//         if (isEmpty())
+//         {
+//             cout << "Stack is empty\n";
+//         }
+//         else
+//         {
+//             for (int i = top; i >= 0; i--)
+//             {
+//                 cout << arr[i] << " ";
+//             }
+//             cout << endl;
+//         }
+//     }
+// };
+//
+// int main()
+//{
+//     Stack s;
+//     s.push(10);
+//     s.push(20);
+//     s.push(30);
+//     s.display();
+//     cout << "Top element: " << s.peek() << endl;
+//     s.pop();
+//     s.display();
+//     return 0;
+// }
 #include <iostream>
 using namespace std;
+
+class Queue
+{
+private:
+    int arr[100]; // Fixed-size array
+    int front, rear;
+
+public:
+    Queue()
+    {
+        front = -1;
+        rear = -1;
+    }
+
+    // Enqueue element
+    void enqueue(int value)
+    {
+        if (rear == 99)
+        {
+            cout << "Queue Overflow\n";
+        }
+        else
+        {
+            if (front == -1)
+                front = 0;
+            arr[++rear] = value;
+        }
+    }
+
+    // Dequeue element
+    void dequeue()
+    {
+        if (front == -1 || front > rear)
+        {
+            cout << "Queue Underflow\n";
+        }
+        else
+        {
+            front++;
+        }
+    }
+
+    // Get front element
+    int getFront()
+    {
+        if (front == -1 || front > rear)
+        {
+            cout << "Queue is empty\n";
+            return -1;
+        }
+        else
+        {
+            return arr[front];
+        }
+    }
+
+    // Check if queue is empty
+    bool isEmpty()
+    {
+        return (front == -1 || front > rear);
+    }
+
+    // Display queue elements
+    void display()
+    {
+        if (isEmpty())
+        {
+            cout << "Queue is empty\n";
+        }
+        else
+        {
+            for (int i = front; i <= rear; i++)
+            {
+                cout << arr[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
 int main()
 {
-    int n, k, w;
-    cin >> k >> n >> w;
-    int cost = k * w * (w + 1) / 2;
-    int ans = cost - n;
-    if (ans < 0)
-    {
-        ans = 0;
-    }
-    cout << ans << endl;
-
+    Queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+    cout << "Front element: " << q.getFront() << endl;
+    q.dequeue();
+    q.display();
     return 0;
 }

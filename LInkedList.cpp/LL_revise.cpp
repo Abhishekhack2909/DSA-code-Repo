@@ -161,6 +161,213 @@ void deleteposition(Node *head, Node *tail, int position)
         delete temp;
     }
 }
+
+// to find the middle of the linked list, see question of leetcode
+
+class Solution
+{
+public:
+    int getLength(ListNode *head)
+    {
+        int len = 0;
+        ListNode *temp = head;
+        while (temp != NULL)
+        {
+            len++;
+            temp = temp->next;
+        }
+        return len;
+    }
+    ListNode *middleNode(ListNode *head)
+    {
+
+        ListNode *slow = head;
+        ListNode *fast = head;
+
+        while (fast != NULL)
+        {
+            fast = fast->next;
+            if (fast != NULL)
+            {
+                fast = fast->next;
+                // main yaha keh skta hu k fast ne 2 step chal liye h
+                // ab slow ko bhi chalwao ek step
+                slow = slow->next;
+            }
+        }
+
+        return slow;
+
+        // int n = getLength(head);
+        // int position = n/2 + 1;
+
+        // ListNode* temp = head;
+        // while(position != 1) {
+        //     position--;
+        //     temp = temp -> next;
+        // }
+        // return temp;
+    }
+};
+// end
+
+// to reverse the linked list
+// in leetcode q with two method , by recursion and by simple interate
+class Solution
+{
+public:
+    ListNode *reverseUsingRecursion(ListNode *prev, ListNode *curr)
+    {
+        // base case
+        if (curr == NULL)
+        {
+            return prev;
+        }
+        // 1 case hum solve krenge
+        ListNode *nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+
+        // baaaki kon sambhalega - recursion
+        return reverseUsingRecursion(prev, curr);
+    }
+    ListNode *reverseList(ListNode *head)
+    {
+        ListNode *prev = NULL;
+        ListNode *curr = head;
+
+        return reverseUsingRecursion(prev, curr);
+
+        // while(curr != NULL) {
+        //     ListNode* nextNode = curr->next;
+        //     curr->next = prev;
+        //     prev = curr;
+        //     curr = nextNode;
+        // }
+        // return prev;
+    }
+};
+// end
+
+// to find the middle  of the node usign two pointer- slow and fast  pointer or called tortoise  algorithm
+int middleNode(Node *head)
+{
+    Node *slow = head;
+    Node *fast = head;
+    while (fast = !NULL)
+    {
+        fast = fast->next;
+        if (fast != NULL)
+        { // imp condition
+            fast = fast->next;
+        }
+        slow = slow->next;
+    }
+}
+return slow;
+// here slow is the middle of the linked list;
+// see if they say the we need to return the node one minus of middle , then
+// only change is (fast->next!=NULL) in both place.
+
+// for cheaking the cycle is present in the linked list or not, we use slow and fast pointer , haspmap approach in leetcode question
+bool cyclecheck(ListNode *head)
+{
+    ListNode *slow = head;
+    ListNode *fast = head;
+    while (fast != NULL)
+    {
+        fast = fast->next;
+        if (fast != NULL)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        if (fast == slow)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// if we want to know the  statring point  for the cycle then
+// appprooach is first make slow and fast as it is in previos , find the comman point of meeting than make slow pointer reset to head , and than move slow and fast pointer both with one by one step  , after that  they meet at a point than that  point is called starting point of cycle
+// code for leetcode q is
+class Solution
+{
+public:
+    ListNode *detectCycle(ListNode *head)
+    {
+        ListNode *slow = head;
+        ListNode *fast = head;
+        while (fast != NULL)
+        {
+            fast = fast->next;
+            if (fast != NULL)
+            {
+                fast = fast->next;
+                slow = slow->next;
+            }
+            if (fast == slow)
+            {
+                break;
+            }
+        }
+        if (fast == NULL)
+        {
+            return NULL;
+        }
+        slow = head; // reset to head
+
+        while (fast != slow)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return slow;
+    }
+};
+
+// for detetion of loop and removal of loop from the starting point as form the previous steps
+void removeloop(Node *head)
+{
+    Node *slow = head;
+    Node *fast = head;
+    while (fast != NULL)
+    {
+        fast = fast->next;
+        if (fast != NULL)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        if (slow == fast)
+        {
+            break;
+        }
+        if (fast == NULL)
+        {
+            return NULL;
+        }
+        slow = head; // reset the slow to head ;
+
+        while (fast != slow)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        Node *startingpoint = slow;
+
+        Node *temp = slow; // code for removal  of staring point
+        while (temp->next != startingpoint)
+        {
+            temp = temp->next;
+        }
+        temp->next = NULL;
+    }
+}
+
 int main()
 {
     Node *head = NULL;
