@@ -63,8 +63,5 @@ using  namespace std;
      int ans=usingtabulation( n, k);
      cout<<"Ans for that "<<ans;
 
-
-
-
  }
  //working ans is 24
