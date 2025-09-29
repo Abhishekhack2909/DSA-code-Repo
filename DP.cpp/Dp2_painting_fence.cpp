@@ -48,6 +48,28 @@ using  namespace std;
       return dp[n];
  }
 
+
+ int solvewithtabulationSO( int n , int k ){// for space optmization
+     int prev2=k;
+     int prev1= k+ k*(k-1);
+     //base case for simple cases
+     if( n==1){
+        return prev2;
+     }
+     if(n==2){
+        return prev1;
+     }
+     int curr;
+     for(int i=3; i<=n; i++ ) {
+        curr= (prev2+prev1)*k-1;
+        //shift
+        prev2=prev1;
+        prev1=curr;
+        
+     }
+     return curr;
+ }
+
  int main(){
     int n =5;
     int k =4;
@@ -60,8 +82,13 @@ using  namespace std;
     //int ans=solveusingRecursion(n,k, );
     //cout<<"Ans for that "<< ans;
 
-     int ans=usingtabulation( n, k);
-     cout<<"Ans for that "<<ans;
+     //int ans=usingtabulation( n, k);
+     //cout<<"Ans for that "<<ans;
+    
+
+      int ans =solvewithtabulationSO(n, k );
+      cout<<"Ans for that "<<ans;
+
 
  }
  //working ans is 24
