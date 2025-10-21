@@ -1,3 +1,5 @@
+ //knap sack problem type 
+
 #include<iostream>
 #include<vector>
 using namespace std;
